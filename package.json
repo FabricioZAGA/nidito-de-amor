@@ -1,0 +1,21 @@
+{
+  "name": "zgaf-final",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "easytimer": "^1.1.1",
+    "easytimer.js": "^4.3.0",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "serialport": "^9.0.2",
+    "socket.io": "^2.3.0"
+  }
+}
