@@ -10,9 +10,9 @@ unsigned char Muestra = 0;
 long cm = 0;
 long cmTemp = 0;
 long pwm = 0;
-unsigned char BUZZER=50;
+char BUZZER = A0;
 //boton
-const int buttonPin = 48;  
+const int buttonPin = 52;  
 int buttonState = 1;  
 
 
@@ -162,9 +162,9 @@ void ultrasonico()
         cmTemp = acum / Muestras;
         acum = 0;
         Muestra = 0;
-        if (cmTemp > 20)
+        if (cmTemp > 30)
         {
-            cmTemp = 20;
+            cmTemp = 30;
         }
         else if (cmTemp < 2)
         {
@@ -248,21 +248,16 @@ void tecladoMatricial()
 void buzzer(){
  buttonState = digitalRead(buttonPin);
  String tempString = String("ring" + String(buttonState));
- // Serial.print(tempString);
- if (buttonState == 1) {
-    digitalWrite(BUZZER,1);
-  } else {
-    
-    digitalWrite(BUZZER,0);
-  }
+
+ int zaga = buttonState ? 0 : 255; 
+ analogWrite(BUZZER,zaga);
 }
 
 void setup()
 {
-  pinMode(BUZZER,OUTPUT);
-  pinMode(buttonPin, INPUT);
-  
-    Serial.begin(9600);
+  pinMode(BUZZER,0);
+  pinMode(buttonPin, INPUT_PULLUP);
+  Serial.begin(9600);
     pinMode(LED, OUTPUT);
 
     for (unsigned char i = 0; i < sizeof(columnas); i++)
